@@ -31,6 +31,11 @@ export class SongService {
       throw new Error("No hay canciones en el sistema");
     }
 
+    res.forEach((song) => {
+      const versesText = song.verses.map((verse) => verse.text);
+      (song as any).verses = versesText;
+    });
+
     return res;
   }
 
