@@ -15,9 +15,6 @@ export class Song {
   @OneToMany(() => Verse, (verse) => verse.song, { cascade: true })
   verses: Verse[];
 
-  @Column({ type: 'varchar', length: 255, nullable: true })
-  chorus: string;
-
   @Column({ type: 'int', width: 2, nullable: true })
   type_coro: number;
 

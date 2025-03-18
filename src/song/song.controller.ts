@@ -7,16 +7,22 @@ import { UpdateSongDto } from './dto/update-song.dto';
 export class SongController {
   constructor(private readonly songService: SongService) {}
 
-  /*@Post()
-  create(@Body() createSongDto: CreateSongDto) {
+  @Post()
+  async create(@Body() createSongDto: CreateSongDto) {
     return this.songService.create(createSongDto);
   }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.songService.findOne(+id);
+  
+  @Get('type/:type_coro')
+  async findByTypeCoro(@Param('type_coro') type_coro: number) {
+    return await this.songService.findByTypeCoro(type_coro);
   }
 
+  @Get()
+  async findAll() {
+    return await this.songService.findAll();
+  }
+
+  /*
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateSongDto: UpdateSongDto) {
     return this.songService.update(+id, updateSongDto);
@@ -27,8 +33,5 @@ export class SongController {
     return this.songService.remove(+id);
   }*/
 
-  @Get()
-  async findAll() {
-    return await this.songService.findAll();
-  }
+  
 }
